@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: BUSL-1.1
+// SPDX-License-Identifier: MIT
 /*
  * Math 64x64 Smart Contract Library.
  * Copyright ©2022 by Poption.org.
