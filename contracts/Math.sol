@@ -8,10 +8,12 @@
 pragma solidity ^0.8.4;
 
 library Math64x64 {
-    uint256 internal constant ONE = 0x10000000000000000;
+    // These are constants used for the calculations within the library
+    // uint256 internal constant ONE = 0x10000000000000000;
     uint256 internal constant ONEONE = 0x100000000000000000000000000000000;
     uint256 internal constant MAX128 = 0xffffffffffffffffffffffffffffffff;
 
+    // Multiplication operation for int256 type numbers. The function uses inline assembly for optimized performance.
     function mul(int256 x, int256 y) internal pure returns (int128 r) {
         assembly {
             r := sar(64, mul(x, y))
@@ -102,6 +104,7 @@ library Math64x64 {
         }
     }
 
+    // Function to calculate the natural logarithm of a uint128 number. This function uses inline assembly for optimized performance.
     function ln(uint128 rx) internal pure returns (int128) {
         require(rx > 0, "Be Pos");
         unchecked {
