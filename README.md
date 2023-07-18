@@ -15,15 +15,15 @@ The library supports various mathematical operations and functions including:
 - Normal cumulative distribution function (`normcdf`)
 - Cauchy cumulative distribution function (`cauchycdf`)
 
-| Function    | Precision / Error    | Average Gas Cost (over 1000 runs unless specified) | comments                                                           |
-| ----------- | -------------------- | -------------------------------------------------- | ------------------------------------------------------------------ |
-| `ln`        | Full 64x64 precision | 1259                                               | The gas cost is 5 time smaller than the ABDKMath64x64 one (7126)   |
-| `sqrt`      | Full 64x64 precision | 629                                                | The gas cost is a little smaller than the ABDKMath64x64 one (699)  |
-| `exp`       | 5e-18 relative error | 1793                                               | The gas cost is 1.5 time smaller than the ABDKMath64x64 one (2746) |
-| `normcdf`   | 2e-7 absolute error  | 444.7                                              |                                                                    |
-| `cauchycdf` | 2e-12 relative error | 587.4                                              |                                                                    |
+| Function    | Precision / Error    | Average Gas Cost (over 1000 runs unless specified) | comments                                                              |
+| ----------- | -------------------- | -------------------------------------------------- | --------------------------------------------------------------------- |
+| `ln`        | Full 64x64 precision | 1259                                               | The gas cost is 5 time smaller than the ABDKMath64x64 one (7126) \*   |
+| `sqrt`      | Full 64x64 precision | 629                                                | The gas cost is a little smaller than the ABDKMath64x64 one (699) \*  |
+| `exp`       | 5e-18 relative error | 1793                                               | The gas cost is 1.5 time smaller than the ABDKMath64x64 one (2746) \* |
+| `normcdf`   | 2e-7 absolute error  | 444.7                                              |                                                                       |
+| `cauchycdf` | 2e-12 relative error | 587.4                                              |                                                                       |
 
-https://github.com/PaulRBerg/prb-math
+\* https://github.com/PaulRBerg/prb-math
 
 ## Usage
 
@@ -31,7 +31,6 @@ Install:
 
 ```shell
 npm install pmath_64x64
-
 ```
 
 Import the pmath_64x64 library into your smart contract and instantiate it as needed. Each function takes as input 64x64 fixed point numbers and returns a 64x64 fixed point number.
