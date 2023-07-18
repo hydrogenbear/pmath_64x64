@@ -1,6 +1,6 @@
-// SPDX-License-Identifier: BUSL-1.1
+// SPDX-License-Identifier: MIT
 /*
- * Copyright ©2022 by Poption.
+ * Copyright ©2023 by Poption.
  * Author: Hydrogenbear <hydrogenbear@poption.org>
  */
 
