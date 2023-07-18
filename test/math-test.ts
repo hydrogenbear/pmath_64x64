@@ -177,7 +177,7 @@ describe("test math", () => {
     let passedCount = 0;
     let allGas = 0;
     await expect(math.testLn(0)).to.be.rejected;
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 1000; i++) {
       const a = getRandom();
 
       const [r, gas] = await math.testLn(tus.toInt(a));
@@ -193,7 +193,7 @@ describe("test math", () => {
   it("sqrt", async () => {
     let passedCount = 0;
     let allGas = 0;
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 1000; i++) {
       const a = getRandom();
 
       const [r, gas] = await math.testSqrt(tus.toInt(a));
@@ -215,7 +215,7 @@ describe("test math", () => {
       const [r, gas] = await math.testExp(0);
       expect(r.sub(tus.TWO_I_64).toString()).to.eql("0");
     }
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 1000; i++) {
       const a_ = tus.BigFloat.random().mul(43.66);
       const a = tus.toDec(tus.toInt(a_));
 
@@ -234,7 +234,7 @@ describe("test math", () => {
     let allGas = 0;
     const pi = tus.BigFloat.acos(-1);
     const errs = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 1000; i++) {
       const a = getSignedRandom();
       const [r, gas] = await math.testCauchyCdf(tus.toInt(a));
       const err = tus
