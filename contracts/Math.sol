@@ -65,6 +65,22 @@ library Math64x64 {
         }
     }
 
+    function mulDiv(
+        uint128 x,
+        uint128 y,
+        uint128 z
+    ) internal pure returns (uint128 r) {
+        assembly {
+            if iszero(z) {
+                revert(0, 0)
+            }
+            r := div(mul(x, y), z)
+            if gt(r, MAX128) {
+                revert(0, 0)
+            }
+        }
+    }
+
     function msb(int128 x) internal pure returns (int128 r) {
         require(x >= 0, "No Neg");
         unchecked {
@@ -148,7 +164,10 @@ library Math64x64 {
                     x := shr(128, mul(x, 0x102c9a3e778060ee6f7caca4f7a29bde9))
                     r := sub(r, 0x2c5c85fdf473de6af278ece600fcbdb)
                 }
-
+                // above is plain binary search,
+                // below is based on https://en.wikipedia.org/wiki/Natural_logarithm#Series
+                // ln(x) = 2((x-1)/(x+1) + 1/3 * ((x-1)/(x+1))^3 + ... The closer x to 1 the
+                // faster the series converges.
                 let m := div(
                     shl(128, sub(0x100000000000000000000000000000000, x)),
                     add(0x100000000000000000000000000000000, x)
@@ -175,6 +194,7 @@ library Math64x64 {
     }
 
     function sqrt(uint128 x) internal pure returns (uint128 r) {
+        // Newton's method
         unchecked {
             int128 msbx = msb(x);
             assembly {
@@ -191,6 +211,8 @@ library Math64x64 {
     }
 
     function normCdf(int128 x) internal pure returns (uint128 r) {
+        // the Numerical approximation comes from https://en.wikipedia.org/wiki/Error_function
+        // Abramowitz and Stegun's method
         assembly {
             let sgn := 1
             if gt(
@@ -225,6 +247,10 @@ library Math64x64 {
     }
 
     function cauchyCdf(int128 x) internal pure returns (uint128 r) {
+        // CDF of Cauchy distribution. cdf(x) = 1/pi * arctan(x) + 1/2
+        // arctan(x) = -arctan(-x)
+        // arctan(x) = pi/2 - arctan(1/x)
+        // calculate arctan(x) via lagrange interpolation when 0 < x < 1
         assembly {
             r := x
             let sgn := 1
