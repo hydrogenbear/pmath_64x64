@@ -1,6 +1,6 @@
-# PoptionFixedPointLib - 64x64 Fixed Point Numerical Operations for Smart Contracts
+# pmath_64x64 Fixed Point Numerical lib for Smart Contracts
 
-- [ ] PoptionFixedPointLib is an open-source library aimed at bringing very gas efficient and high-precision numerical operations to smart contracts. This library is a part of an options smart contract project, providing essential numerical functions in a 64x64 fixed-point representation for superior precision and performance.
+- pmath_64x64 is an open-source library aimed at bringing very gas efficient and high-precision numerical operations to smart contracts. This library is a part of an options smart contract project, providing essential numerical functions in a 64x64 fixed-point representation for superior precision and performance.
 
 ## Features
 
@@ -15,8 +15,6 @@ The library supports various mathematical operations and functions including:
 - Normal cumulative distribution function (`normcdf`)
 - Cauchy cumulative distribution function (`cauchycdf`)
 
-Sure, here's the information converted into a table:
-
 | Function    | Precision / Error    | Average Gas Cost (over 1000 runs unless specified) | comments                                                           |
 | ----------- | -------------------- | -------------------------------------------------- | ------------------------------------------------------------------ |
 | `ln`        | Full 64x64 precision | 1259                                               | The gas cost is 5 time smaller than the ABDKMath64x64 one (7126)   |
@@ -29,22 +27,27 @@ https://github.com/PaulRBerg/prb-math
 
 ## Usage
 
-Import the FixedPointLib library into your smart contract and instantiate it as needed. Each function takes as input 64x64 fixed point numbers and returns a 64x64 fixed point number.
+Install:
+
+```shell
+npm install pmath_64x64
+
+```
+
+Import the pmath_64x64 library into your smart contract and instantiate it as needed. Each function takes as input 64x64 fixed point numbers and returns a 64x64 fixed point number.
 
 Try running some of the following tasks:
 
 ```shell
 npx hardhat help
 npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
-
 ```
 
-## Contribution
+## Contribute
 
-As an open-source project, we welcome contributions from everyone. If you're interested in contributing, please feel free to open issues or make pull requests.
+The contract has not yet been audited. If you're interested in contributing towards the auditing process, donations are welcomed. Please send Ether (ETH) to this address: `0xb39D1b18C3B881a301bd9D6E06393b42052BD112`.
+
+After making a donation, please open a new issue in our GitHub repository with the transaction details so we can acknowledge your contribution. Your support is greatly appreciated!
 
 ## License
 
@@ -53,5 +56,3 @@ This project is licensed under MIT LICENSE. See the [LICENSE](LICENSE) file for 
 ## Contact
 
 If you have any questions or run into any issues, please feel free to open an issue on this repository.
-
-Happy coding!
